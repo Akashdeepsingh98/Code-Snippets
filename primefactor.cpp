@@ -23,6 +23,18 @@ vector<int> factors(int n) {
     return f;
 }
 
+vector<int> SieveOfEras(int n)
+{
+    vector<int> sieve(n+1, 0);
+    for (int x = 2; x <= n; x++) {
+        if (sieve[x]) continue;
+        for (int u = 2*x; u <= n; u += x) {
+            sieve[u] = x;
+        }
+    }
+    return sieve;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(false);
